@@ -14,6 +14,13 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +38,11 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot()
   ],
   providers: [],
