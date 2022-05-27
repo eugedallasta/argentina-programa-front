@@ -58,7 +58,7 @@ export class EducationComponent implements OnInit {
     document.getElementById('add-education-form')?.click();
     this.educationService.addEducation(addForm.value).subscribe({
       next: (response: Educacion) => {
-        this.toastr.info('Se ha agregado Educación correctamente', 'Educación agregada');
+        this.toastr.success('Se ha agregado Educación correctamente', 'Educación agregada', {positionClass: 'toast-bottom-right'});
         this.getEducation();
         addForm.reset();
       },
@@ -74,7 +74,7 @@ export class EducationComponent implements OnInit {
     document.getElementById('edit-education-form')?.click();
     this.educationService.updateEducation(education).subscribe({
       next: (response: Educacion) => {
-        this.toastr.info('Se ha actualizado Educación correctamente', 'Educación actualizada');
+        this.toastr.success('Se ha actualizado Educación correctamente', 'Educación actualizada', {positionClass: 'toast-bottom-right'});
         this.getEducation();
       },
       error: (error: HttpErrorResponse) => {
@@ -86,7 +86,7 @@ export class EducationComponent implements OnInit {
   public onDeleteEducation(idEdu:number):void{
     this.educationService.deleteEducation(idEdu).subscribe({
       next: (response: void) => {
-        this.toastr.warning('Se ha eliminado Educación correctamente', 'Educación eliminada');
+        this.toastr.error('Se ha eliminado Educación correctamente', 'Educación eliminada', {positionClass: 'toast-bottom-right'});
         this.getEducation();
       },
       error: (error: HttpErrorResponse) => {
@@ -95,9 +95,7 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+
 
 
 }

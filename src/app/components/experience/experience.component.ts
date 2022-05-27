@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Experiencia } from 'src/app/models/iexperiencia';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-experience',
@@ -15,7 +16,7 @@ export class ExperienceComponent implements OnInit {
   public editExperience: Experiencia | undefined;
   public deleteExperience: Experiencia | undefined;
 
-  constructor(private experienceService:ExperienceService) { }
+  constructor(private experienceService:ExperienceService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getExperience();
@@ -56,6 +57,7 @@ export class ExperienceComponent implements OnInit {
     document.getElementById('add-experience-form')?.click();
     this.experienceService.addExperience(addForm.value).subscribe({
       next: (response: Experiencia) => {
+        this.toastr.success('Se ha agregado Experiencia correctamente', 'Experiencia agregada', {positionClass: 'toast-bottom-right'});
         this.getExperience();
         addForm.reset();
       },
@@ -71,6 +73,7 @@ export class ExperienceComponent implements OnInit {
     document.getElementById('edit-experience-form')?.click();
     this.experienceService.updateExperience(experience).subscribe({
       next: (response: Experiencia) => {
+        this.toastr.success('Se ha actualizado Experiencia correctamente', 'Experiencia actualizada', {positionClass: 'toast-bottom-right'});
         this.getExperience();
 
       },
@@ -83,6 +86,7 @@ export class ExperienceComponent implements OnInit {
   public onDeleteExperience(idExp:number):void{
     this.experienceService.deleteExperience(idExp).subscribe({
       next: (response: void) => {
+        this.toastr.error('Se ha eliminado Experiencia correctamente', 'Experiencia eliminada', {positionClass: 'toast-bottom-right'});
         this.getExperience();
       },
       error: (error: HttpErrorResponse) => {
