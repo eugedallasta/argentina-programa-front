@@ -1,1 +1,25 @@
-<p>skills works!</p>
+<div class="px-4 py-3 mb-5 grey">
+  <div class="">
+    <h2 class="border-bottom pb-2">Skills</h2>
+      <div class="row d-flex justify-content-around mt-3">
+        <div class="col" *ngFor="let item of skills">
+          <circle-progress
+          [percent]="item.porcentaje"
+          [radius]="70"
+          [outerStrokeWidth]="9"
+          [innerStrokeWidth]="4"
+          [outerStrokeColor]="'#69dec3'"
+          [innerStrokeColor]="'#797d89'"
+          [backgroundColor]="'#112240'"
+          [animation]="true"
+          [animationDuration]="600"
+          [titleColor]="'#69dec3'"
+          [titleFontSize]="'1.5rem'"
+          [subtitleColor]="'#a8b2d1'"
+          [subtitle]="item.nombreSkill"
+          [subtitleFontSize]="'1.2rem'"
+          ></circle-progress>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.photo{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 0.25rem solid;
+}
+.photo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #484b54;
+}
+.text-grey{
+  color: #484b54;
+}
+.add{
+  background-color: #0a192f; //Navy
+  color: #69dec3;
+}
+.text{
+  color:#ccd6f6; // Lightest Slate
+}
+@media (min-width: 767px) {
+  .photo{
+      height: 190px;
+      width: 190px;
+  }
+}

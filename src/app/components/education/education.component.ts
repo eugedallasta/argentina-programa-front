@@ -74,7 +74,7 @@ export class EducationComponent implements OnInit {
     document.getElementById('edit-education-form')?.click();
     this.educationService.updateEducation(education).subscribe({
       next: (response: Educacion) => {
-        this.toastr.success('Se ha actualizado Educación correctamente', 'Educación actualizada');
+        this.toastr.info('Se ha actualizado Educación correctamente', 'Educación actualizada');
         this.getEducation();
       },
       error: (error: HttpErrorResponse) => {
@@ -93,6 +93,10 @@ export class EducationComponent implements OnInit {
         alert(error.message);
       }
     });
+  }
+
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 
 

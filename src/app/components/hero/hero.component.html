@@ -1,1 +1,27 @@
-<p>hero works!</p>
+<div class="container-fluid">
+
+  <div class="col-12 p-2">
+
+    <h3 class="display-5 fw-bold text-center mt-1 mt-md-3">
+      <span class="fs-4 text ">Hola! Soy </span>
+      <div *ngIf="user">
+
+      <span class="text-muted ms-4">{{user.nombre}}</span>
+      <span class="text-muted ms-2">{{user.apellido}}</span>
+      </div>
+    </h3>
+
+    <div class="d-flex flex-column flex-md-row">
+      <div class="photo-container my-3 mb-md-5 col-md-4" *ngIf="user">
+        <img src= {{user.fotoPerfil}} alt="" class="photo" />
+      </div>
+      <p class=" p-2 lh-lg col-md-6 text-grey fw-semibold" *ngIf="user">
+       {{user.descripcion}}
+       <a download="CV Eugenia Dallasta" href="assets/CV Eugenia Dallasta.pdf">
+       <button class="btn add mt-1" type="submit">Descargar CV</button>
+       </a>
+      </p>
+    </div>
+
+  </div>
+</div>

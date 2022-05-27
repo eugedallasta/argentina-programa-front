@@ -1,1 +1,226 @@
-<p>experience works!</p>
+<div class="px-4 py-3 mb-5 grey" id="featured-3">
+  <div class="pb-2 border-bottom d-flex justify-content-between">
+    <h2>Experiencia</h2>
+        <!-- boton añadir Experiencia -->
+        <button
+        type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Añadir Experiencia"
+        data-bs-toggle="modal"
+        data-bs-target="#addExperienceModal"
+        class="btn add mb-2"
+      >
+        <i class="fas fa-plus"></i>
+      </button>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-10 mt-3">
+      <!-- TABLA -->
+      <table class="table  text-light">
+        <thead>
+          <tr>
+            <th scope="col">Empresa</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Año</th>
+            <th scope="col"></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of experience">
+            <td>{{ item.descripcionExp }}</td>
+            <td>{{ item.tituloExp }}</td>
+            <td>{{ item.fechaExp }}</td>
+            <td>
+              <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editExperienceModal"  (click)="onOpenModal('edit', item)">
+                <i class="icon fas fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-dark" (click)="onDeleteExperience(item.idExp)">
+                <i class="icon fas fa-trash-alt"></i>
+              </button>
+            </td>
+            <td></td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+      <!-- FIN TABLA -->
+  </div>
+</div>
+
+<!-- Modal AÑADIR experiencia -->
+<div
+  class="modal fade"
+  id="addExperienceModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addExperienceModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content  modal-css">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addExperienceModalLabel">
+          Añadir Experiencia
+        </h5>
+        <button type="button" class="btn-close green" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddExperience(addForm)">
+          <div class="form-group">
+            <label for="descripcionExp">Empresa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="descripcionExp"
+              name="descripcionExp"
+              ngModel
+              required
+              placeholder="Nombre de la empresa"
+            />
+          </div>
+          <div class="form-group">
+            <label for="tituloExp">Cargo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tituloExp"
+              name="tituloExp"
+              ngModel
+              required
+              placeholder="Cargo que ocupó"
+            />
+          </div>
+          <div class="form-group">
+            <label for="fechaExp">Año de finalización</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fechaExp"
+              name="fechaExp"
+              ngModel
+              required
+              placeholder="Año de finalización"
+            />
+          </div>
+          <div class="modal-footer mt-3">
+            <button
+              type="button"
+              id="add-experience-form"
+              class="btn button1"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="submit"
+              class="btn button2"
+              [disabled]="addForm.invalid"
+              data-bs-dismiss="modal"
+            >
+              Añadir
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal EDITAR experiencia -->
+<div
+class="modal fade"
+id="editExperienceModal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="updateExperienceModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+  <div class="modal-content modal-css">
+    <div class="modal-header">
+      <h5 class="modal-title" id="updateExperienceModalLabel">
+        Editar Experiencia
+      </h5>
+      <button
+        type="button"
+        class="btn-close green"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form #editForm="ngForm">
+        <div class="form-group">
+          <label for="descripcionExp">Empresa</label>
+          <input
+            type="text"
+            class="form-control"
+            id="descripcionExp"
+            name="descripcionExp"
+            ngModel="{{ editExperience?.descripcionExp }}"
+            required
+            placeholder="Empresa"
+          />
+        </div>
+
+        <input
+          type="hidden"
+          ngModel="{{ editExperience?.idExp }}"
+          name="idExp"
+          class="form-control"
+          id="idExp"
+          placeholder=""
+        />
+
+        <div class="form-group">
+          <label for="tituloExp">Cargo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tituloExp"
+            name="tituloExp"
+            ngModel="{{ editExperience?.tituloExp }}"
+            required
+            placeholder="Cargo"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fechaExp">Año de finalización</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fechaExp"
+            name="fechaExp"
+            ngModel="{{ editExperience?.fechaExp }}"
+            required
+            placeholder="Año de finalización"
+          />
+        </div>
+        <div class="modal-footer  mt-3">
+          <button
+            type="reset"
+            class="btn button1"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+
+          <button
+            (click)="onUpdateExperience(editForm.value)"
+            class="btn button2"
+            data-bs-dismiss="modal"
+          >
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
