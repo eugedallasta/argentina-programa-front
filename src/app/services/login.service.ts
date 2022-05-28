@@ -39,7 +39,7 @@ export class LoginService {
     }
   }
 
-  async loginWithGitHub(email: string, password: string) {
+  async loginWithGitHub() {
     try {
       return await this.afAuth.signInWithPopup(new firebase.auth.GithubAuthProvider());
     } catch (err) {
