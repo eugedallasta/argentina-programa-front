@@ -23,6 +23,8 @@ export class HeroComponent implements OnInit {
     this.heroService.getUser().subscribe ({
       next: (response: Persona) => {
         this.user = response;
+        console.log(this.user.descripcion);
+
 
       },
       error:(error:HttpErrorResponse)=>{

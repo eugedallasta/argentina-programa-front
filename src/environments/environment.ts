@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  apiBaseUrl: 'http://localhost:8080/',
+  apiBaseUrl: 'https://eugenia-back.herokuapp.com/',
 
   firebaseConfig : {
     apiKey: "AIzaSyAYSPuJi9yg70wSp7Z2qvRS6DqfGX0NIok",

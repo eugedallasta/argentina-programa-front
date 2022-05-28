@@ -14,7 +14,7 @@ export class HeroService {
   constructor(private http:HttpClient) { }
 
   public getUser():Observable<Persona>{
-    return this.http.get<Persona>(`${this.apiServerUrl}persona/id/2`);
+    return this.http.get<Persona>(`${this.apiServerUrl}persona/id/1`);
   }
 
   public updateUser(persona:Persona):Observable<Persona>{
