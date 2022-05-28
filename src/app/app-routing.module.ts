@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -14,7 +15,9 @@ const routes: Routes = [
     canActivate: [AngularFireAuthGuard],   data: { authGuardPipe: redirectUnauthorizedToLogin } },
 
   { path:'login', component:LoginComponent},
+
   { path:'register', component:RegisterComponent},
+
   { path: '**', redirectTo: '/login' }
 
 ];
