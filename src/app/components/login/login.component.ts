@@ -34,7 +34,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onLoginGitHub() {}
+  onLoginGitHub() {
+    const { email, password } = this.user;
+    this.loginService.loginWithGitHub(email, password).then(res => {
+      console.log('se logeo --->', res);
+      this.router.navigate(['/portfolio']);
+    })
+  }
 
 
 }
