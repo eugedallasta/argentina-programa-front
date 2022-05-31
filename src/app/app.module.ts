@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -46,6 +46,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot(),
     NgCircleProgressModule.forRoot({}),
+    NgxSpinnerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
