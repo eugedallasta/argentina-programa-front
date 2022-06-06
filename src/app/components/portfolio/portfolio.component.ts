@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-portfolio',
@@ -8,13 +8,10 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 4000);
+
   }
 
 }
